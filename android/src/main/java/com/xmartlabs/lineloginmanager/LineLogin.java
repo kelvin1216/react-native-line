@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import java.util.Arrays;
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.BaseActivityEventListener;
@@ -15,8 +16,10 @@ import com.facebook.react.bridge.WritableMap;
 import com.linecorp.linesdk.LineAccessToken;
 import com.linecorp.linesdk.LineApiResponse;
 import com.linecorp.linesdk.LineProfile;
+import com.linecorp.linesdk.Scope;
 import com.linecorp.linesdk.api.LineApiClient;
 import com.linecorp.linesdk.api.LineApiClientBuilder;
+import com.linecorp.linesdk.auth.LineAuthenticationParams;
 import com.linecorp.linesdk.auth.LineLoginApi;
 import com.linecorp.linesdk.auth.LineLoginResult;
 
