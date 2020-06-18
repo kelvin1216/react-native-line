@@ -73,7 +73,10 @@ public class LineLogin extends ReactContextBaseJavaModule {
             currentPromise = promise;
             Context context = getCurrentActivity().getApplicationContext();
             String channelId = context.getString(R.string.line_channel_id);
-            Intent intent = LineLoginApi.getLoginIntent(context, channelId);
+            Intent intent = LineLoginApi.getLoginIntent(context, channelId, new LineAuthenticationParams.Builder()
+                    .scopes(Arrays.asList(Scope.PROFILE))
+                    // .nonce("<a randomly-generated string>") // nonce can be used to improve security
+                    .build());
             getCurrentActivity().startActivityForResult(intent, REQUEST_CODE);
         } catch (Exception e) {
             promise.reject(ERROR, e.toString());
@@ -132,7 +135,7 @@ public class LineLogin extends ReactContextBaseJavaModule {
 
     private WritableMap parseAccessToken(LineAccessToken accessToken) {
         WritableMap result = Arguments.createMap();
-        result.putString("accessToken", accessToken.getAccessToken());
+        result.putString("accessToken", accessToken.getTokenString());
         result.putString("expirationDate", Long.toString(accessToken.getExpiresInMillis()));
         return result;
     }

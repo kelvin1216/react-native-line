@@ -27,7 +27,8 @@ repositories {
 
 dependencies {
     compile fileTree(dir: "libs", include: ["*.jar"])
-    compile(name:'line-sdk-5.0.0', ext:'aar') { transitive = true }
+    // compile(name:'line-sdk-5.0.0', ext:'aar') { transitive = true }
+    compile "com.linecorp.linesdk:linesdk:5.4.0"
     compile "com.android.support:appcompat-v7:26.0.1"
     compile "com.android.support:customtabs:26.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
